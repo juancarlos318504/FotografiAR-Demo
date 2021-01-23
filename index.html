@@ -176,7 +176,7 @@
 
             <div class="o-video o-logo-container" id="logo-container"><img id="logo" src="LogoUnicentro.png"/></div>
             
-            <div id="timer"><div id="timer-count"></div></div>
+            <div id="timer"><div id="timer_count"></div></div>
     
             <div id="container-button" >
                 <button id="snap" class="btn btn-info"> <img src="camera.png" style="height: 70%; object-fit: contain;"></button>
@@ -343,14 +343,15 @@
     const logo = document.getElementById("logo");
     // Draw image
     var context = canvas.getContext('2d');
+    var timer = document.getElementById("timer_count");
 
     snap.addEventListener("click", 
         function() {
             //montaje.playbackRate = 1;
             //montaje.play();
-            var timer = document.getElementById("timer-count");
+            
             snap.setAttribute("disabled", "disabled");
-            timer.setAttribute("disabled", "disabled");
+            //timer.setAttribute("disabled", "disabled");
             timer.innerHTML = 5;
 
             var countdown = window.setInterval(function() {
@@ -382,6 +383,8 @@
                 link.click();
 
                 context.clearRect(0, 0, canvas.width, canvas.height);
+                //timer.removeAttribute("disabled");
+                snap.removeAttribute("disabled");
 
                 window.setTimeout(function() {
                     timer.innerHTML = "";
